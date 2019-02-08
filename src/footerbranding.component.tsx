@@ -6,9 +6,7 @@ import { library, FontAwesomeIcon } from './fontawesome'
 const logoSrc = require('./img/serlo-logo.svg')
 const participateSrc = require('./img/footer_participate.svg')
 const donateSrc = require('./img/footer_donate.svg')
-
-// TODO: should be in an external file
-const blue = '#007EC1'
+import Logo from './logo.component'
 
 export interface Props {
   serloSlogan: string
@@ -20,16 +18,7 @@ export class FooterBranding extends React.Component<Props> {
       <div className="row footerbranding">
         <div className="brand col-lg-8">
           <div className="navbar-brand-wrap">
-            <h1>
-              <a className="navbar-brand" href=".">
-                <img alt="Serlo" src={logoSrc} />
-              </a>
-            </h1>
-            <h2>
-              <a className="navbar-subline icon" href="#subject">
-                {this.props.serloSlogan}
-              </a>
-            </h2>
+            <Logo subline={this.props.serloSlogan} />
           </div>
           <a id="toplink" href="#top" title="Mit Serlo ganz nach oben ;)">
             <FontAwesomeIcon icon="chevron-up" size="2x" />
