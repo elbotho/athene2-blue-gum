@@ -1,4 +1,3 @@
-
 import { Grommet } from 'grommet'
 import * as React from 'react'
 import { createGlobalStyle } from 'styled-components'
@@ -7,11 +6,7 @@ import { transparentize } from 'polished'
 import './fonts/fonts.css'
 
 export function Provider({ children }: ProviderProps) {
-  return (
-    <Grommet theme={theme}>
-      {children}
-    </Grommet>
-  )
+  return <Grommet theme={theme}>{children}</Grommet>
 }
 
 /* full grommet theme output for reference: https://github.com/serlo/athene2-blue-gum/wiki/Grommet-default-theme-export */
@@ -29,13 +24,13 @@ const theme = {
     container: {
       sm: 46, // rem
       md: 61, // rem
-      lg: 76  // rem
+      lg: 76 // rem
     },
     breakpoints: {
-      xs: 0,  // em
+      xs: 0, // em
       sm: 48, // em
       md: 64, // em
-      lg: 75  // em
+      lg: 75 // em
     }
   },
   global: {
@@ -48,8 +43,8 @@ const theme = {
         '4': '6',
         '5': '6',
         '6': '6',
-        'dark': '#f8f8f8',
-        'light': '#666666'
+        dark: '#f8f8f8',
+        light: '#666666'
       },
       //'active': 'rgba(221,221,221,0.5)',
       //'black': '#000000',
@@ -101,8 +96,7 @@ const theme = {
       lightblue: '#52a6d0',
       lighterblue: '#91c5e4',
       bluewhite: '#f0f7fb',
-      helperblue: '#00b4d5',
-      
+      helperblue: '#00b4d5'
     },
     // font: {
     //   size: '16px',
@@ -135,8 +129,8 @@ const theme = {
   },
   button: {
     color: {
-      light: "brand",
-      dark: "white"
+      light: 'brand',
+      dark: 'white'
     },
     border: {
       width: 0,
@@ -146,7 +140,9 @@ const theme = {
       opacity: 0.3
     },
     extend: props => {
-      const backgroundColor = props.colorValue ? props.theme.global.colors[props.colorValue] : props.theme.global.colors.brand
+      const backgroundColor = props.colorValue
+        ? props.theme.global.colors[props.colorValue]
+        : props.theme.global.colors.brand
       return `
         border-radius: .5rem;
         /* icon distance */
@@ -156,19 +152,22 @@ const theme = {
         > div > svg {
           ${ props.hasIcon ? 'width: 0.75em' : '' }
         }
-        ${ props.secondary ? 'background-color: '+transparentize(0.8, backgroundColor)+';' : '' }
-        ${ props.colorValue || props.primary ? 'color: #fff' : '' }
+        ${
+          props.secondary
+            ? 'background-color: ' + transparentize(0.8, backgroundColor) + ';'
+            : ''
+        }
+        ${props.colorValue || props.primary ? 'color: #fff' : ''}
         
         &:hover {
           box-shadow: none;
           background-color: ${transparentize(0.5, backgroundColor)};
-          ${ props.secondary ? 'color: #fff' : '' }
+          ${props.secondary ? 'color: #fff' : ''}
         }
       `
     }
   }
 }
-
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -210,5 +209,4 @@ html  {
 interface ProviderProps {
   children: React.ReactNode
 }
-
 
